@@ -1,11 +1,30 @@
 /*
- * Many of the methods in this class have been derived from the
- * jMonkyEngine class and adapted for use within the LSS 
- * game engine. Therefore, the following is provided:
+ * Copyright (C) 2014 Jason Taylor.
+ * Released as open-source under the Apache License, Version 2.0.
  * 
- */
-
-/*
+ * =\/==========================================================================
+ * 
+ * Copyright (C) 2014 Jason Taylor
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * =============================================================================
+ * 
+ * This class contains code from jMonkeyEngine, copyright jMonkeyEngine and 
+ * licensed under New BSD License.
+ * 
+ * =\/==========================================================================
+ * 
  * Copyright (c) 2009-2012 jMonkeyEngine
  * All rights reserved.
  *
@@ -35,8 +54,8 @@
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * 
  */
-
 package com.sudoplay.math;
 
 /**
@@ -47,7 +66,7 @@ package com.sudoplay.math;
  * 
  * @author Mark Powell (original for JME)
  * @author Joshua Slack (original for JME)
- * @author Jason Taylor (modified for LSS)
+ * @author Jason Taylor (modified)
  */
 public final class Vector3f implements Cloneable {
 
@@ -340,7 +359,8 @@ public final class Vector3f implements Cloneable {
    * @return result, after recieving the cross product vector.
    */
   public Vector3f cross(float otherX, float otherY, float otherZ, Vector3f result) {
-    if (result == null) result = new Vector3f();
+    if (result == null)
+      result = new Vector3f();
     float resX = ((y * otherZ) - (z * otherY));
     float resY = ((z * otherX) - (x * otherZ));
     float resZ = ((x * otherY) - (y * otherX));
@@ -580,7 +600,8 @@ public final class Vector3f implements Cloneable {
     if (null == vec) {
       return null;
     }
-    if (store == null) store = new Vector3f();
+    if (store == null)
+      store = new Vector3f();
     return store.set(x * vec.x, y * vec.y, z * vec.z);
   }
 
@@ -889,9 +910,12 @@ public final class Vector3f implements Cloneable {
    * @return true or false as stated above.
    */
   public static boolean isValidVector(Vector3f vector) {
-    if (vector == null) return false;
-    if (Float.isNaN(vector.x) || Float.isNaN(vector.y) || Float.isNaN(vector.z)) return false;
-    if (Float.isInfinite(vector.x) || Float.isInfinite(vector.y) || Float.isInfinite(vector.z)) return false;
+    if (vector == null)
+      return false;
+    if (Float.isNaN(vector.x) || Float.isNaN(vector.y) || Float.isNaN(vector.z))
+      return false;
+    if (Float.isInfinite(vector.x) || Float.isInfinite(vector.y) || Float.isInfinite(vector.z))
+      return false;
     return true;
   }
 
@@ -969,9 +993,12 @@ public final class Vector3f implements Cloneable {
     }
 
     Vector3f comp = (Vector3f) o;
-    if (Float.compare(x, comp.x) != 0) return false;
-    if (Float.compare(y, comp.y) != 0) return false;
-    if (Float.compare(z, comp.z) != 0) return false;
+    if (Float.compare(x, comp.x) != 0)
+      return false;
+    if (Float.compare(y, comp.y) != 0)
+      return false;
+    if (Float.compare(z, comp.z) != 0)
+      return false;
     return true;
   }
 
@@ -1038,12 +1065,12 @@ public final class Vector3f implements Cloneable {
    */
   public float get(int index) {
     switch (index) {
-      case 0:
-        return x;
-      case 1:
-        return y;
-      case 2:
-        return z;
+    case 0:
+      return x;
+    case 1:
+      return y;
+    case 2:
+      return z;
     }
     throw new IllegalArgumentException("index must be either 0, 1 or 2");
   }
@@ -1058,15 +1085,15 @@ public final class Vector3f implements Cloneable {
    */
   public void set(int index, float value) {
     switch (index) {
-      case 0:
-        x = value;
-        return;
-      case 1:
-        y = value;
-        return;
-      case 2:
-        z = value;
-        return;
+    case 0:
+      x = value;
+      return;
+    case 1:
+      y = value;
+      return;
+    case 2:
+      z = value;
+      return;
     }
     throw new IllegalArgumentException("index must be either 0, 1 or 2");
   }

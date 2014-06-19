@@ -1,11 +1,30 @@
 /*
- * Many of the methods in this class have been derived from the
- * jMonkyEngine class and adapted for use within the LSS 
- * game engine. Therefore, the following is provided:
+ * Copyright (C) 2014 Jason Taylor.
+ * Released as open-source under the Apache License, Version 2.0.
  * 
- */
-
-/*
+ * =\/==========================================================================
+ * 
+ * Copyright (C) 2014 Jason Taylor
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * =============================================================================
+ * 
+ * This class contains code from jMonkeyEngine, copyright jMonkeyEngine and 
+ * licensed under New BSD License.
+ * 
+ * =\/==========================================================================
+ * 
  * Copyright (c) 2009-2012 jMonkeyEngine
  * All rights reserved.
  *
@@ -35,6 +54,7 @@
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * 
  */
 package com.sudoplay.math;
 
@@ -48,7 +68,7 @@ package com.sudoplay.math;
  * 
  * @author Mark Powell (original for JME)
  * @author Joshua Slack (original for JME)
- * @author Jason Taylor (modified for LSS)
+ * @author Jason Taylor (modified)
  */
 public final class Quaternion {
 
@@ -568,23 +588,23 @@ public final class Quaternion {
     float zw = z * w * norm;
 
     switch (i) {
-      case 0:
-        store.x = 1 - 2 * (yy + zz);
-        store.y = 2 * (xy + zw);
-        store.z = 2 * (xz - yw);
-        break;
-      case 1:
-        store.x = 2 * (xy - zw);
-        store.y = 1 - 2 * (xx + zz);
-        store.z = 2 * (yz + xw);
-        break;
-      case 2:
-        store.x = 2 * (xz + yw);
-        store.y = 2 * (yz - xw);
-        store.z = 1 - 2 * (xx + yy);
-        break;
-      default:
-        throw new IllegalArgumentException("Invalid column index. " + i);
+    case 0:
+      store.x = 1 - 2 * (yy + zz);
+      store.y = 2 * (xy + zw);
+      store.z = 2 * (xz - yw);
+      break;
+    case 1:
+      store.x = 2 * (xy - zw);
+      store.y = 1 - 2 * (xx + zz);
+      store.z = 2 * (yz + xw);
+      break;
+    case 2:
+      store.x = 2 * (xz + yw);
+      store.y = 2 * (yz - xw);
+      store.z = 1 - 2 * (xx + yy);
+      break;
+    default:
+      throw new IllegalArgumentException("Invalid column index. " + i);
     }
 
     return store;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="compile" name="Compile SudoMATH" basedir=".">
+<project default="compile" name="Compile SudoMath" basedir=".">
 
 	<target name="compile">
 
@@ -7,7 +7,7 @@
 		<property name="build.dir" value="${basedir}/build" />
 		<property name="build.class.dir" value="${build.dir}/class" />
 		<property name="dist.dir" value="${basedir}/dist" />
-		<property name="dist.jarfile" value="${dist.dir}/SudoMATH-1.0.0.jar" />
+		<property name="dist.jarfile" value="${dist.dir}/SudoMath-1.0.1.jar" />
 
 		<mkdir dir="${build.class.dir}" />
 		<mkdir dir="${dist.dir}" />

@@ -1,11 +1,30 @@
 /*
- * Many of the methods in this class have been derived from the
- * jMonkyEngine class and adapted for use within the LSS 
- * game engine. Therefore, the following is provided:
+ * Copyright (C) 2014 Jason Taylor.
+ * Released as open-source under the Apache License, Version 2.0.
  * 
- */
-
-/*
+ * =\/==========================================================================
+ * 
+ * Copyright (C) 2014 Jason Taylor
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * =============================================================================
+ * 
+ * This class contains code from jMonkeyEngine, copyright jMonkeyEngine and 
+ * licensed under New BSD License.
+ * 
+ * =\/==========================================================================
+ * 
  * Copyright (c) 2009-2012 jMonkeyEngine
  * All rights reserved.
  *
@@ -35,6 +54,7 @@
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * 
  */
 package com.sudoplay.math;
 
@@ -45,7 +65,7 @@ package com.sudoplay.math;
  * calculations.
  * 
  * @author Maarten Steur (original for JME)
- * @author Jason Taylor (modified for LSS)
+ * @author Jason Taylor (modified)
  */
 public final class Vector4f {
 
@@ -499,7 +519,8 @@ public final class Vector4f {
     if (null == vec) {
       return null;
     }
-    if (store == null) store = new Vector4f();
+    if (store == null)
+      store = new Vector4f();
     return store.set(x * vec.x, y * vec.y, z * vec.z, w * vec.w);
   }
 
@@ -822,9 +843,12 @@ public final class Vector4f {
    * @return true or false as stated above.
    */
   public static boolean isValidVector(Vector4f vector) {
-    if (vector == null) return false;
-    if (Float.isNaN(vector.x) || Float.isNaN(vector.y) || Float.isNaN(vector.z) || Float.isNaN(vector.w)) return false;
-    if (Float.isInfinite(vector.x) || Float.isInfinite(vector.y) || Float.isInfinite(vector.z) || Float.isInfinite(vector.w)) return false;
+    if (vector == null)
+      return false;
+    if (Float.isNaN(vector.x) || Float.isNaN(vector.y) || Float.isNaN(vector.z) || Float.isNaN(vector.w))
+      return false;
+    if (Float.isInfinite(vector.x) || Float.isInfinite(vector.y) || Float.isInfinite(vector.z) || Float.isInfinite(vector.w))
+      return false;
     return true;
   }
 
@@ -874,10 +898,14 @@ public final class Vector4f {
     }
 
     Vector4f comp = (Vector4f) o;
-    if (Float.compare(x, comp.x) != 0) return false;
-    if (Float.compare(y, comp.y) != 0) return false;
-    if (Float.compare(z, comp.z) != 0) return false;
-    if (Float.compare(w, comp.w) != 0) return false;
+    if (Float.compare(x, comp.x) != 0)
+      return false;
+    if (Float.compare(y, comp.y) != 0)
+      return false;
+    if (Float.compare(z, comp.z) != 0)
+      return false;
+    if (Float.compare(w, comp.w) != 0)
+      return false;
     return true;
   }
 
@@ -954,14 +982,14 @@ public final class Vector4f {
    */
   public float get(int index) {
     switch (index) {
-      case 0:
-        return x;
-      case 1:
-        return y;
-      case 2:
-        return z;
-      case 3:
-        return w;
+    case 0:
+      return x;
+    case 1:
+      return y;
+    case 2:
+      return z;
+    case 3:
+      return w;
     }
     throw new IllegalArgumentException("index must be either 0, 1, 2 or 3");
   }
@@ -976,18 +1004,18 @@ public final class Vector4f {
    */
   public void set(int index, float value) {
     switch (index) {
-      case 0:
-        x = value;
-        return;
-      case 1:
-        y = value;
-        return;
-      case 2:
-        z = value;
-        return;
-      case 3:
-        w = value;
-        return;
+    case 0:
+      x = value;
+      return;
+    case 1:
+      y = value;
+      return;
+    case 2:
+      z = value;
+      return;
+    case 3:
+      w = value;
+      return;
     }
     throw new IllegalArgumentException("index must be either 0, 1, 2 or 3");
   }

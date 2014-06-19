@@ -1,11 +1,30 @@
 /*
- * Many of the methods in this class have been derived from the
- * jMonkyEngine class and adapted for use within the LSS 
- * game engine. Therefore, the following is provided:
+ * Copyright (C) 2014 Jason Taylor.
+ * Released as open-source under the Apache License, Version 2.0.
  * 
- */
-
-/* 
+ * =\/==========================================================================
+ * 
+ * Copyright (C) 2014 Jason Taylor
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * =============================================================================
+ * 
+ * This class contains code from jMonkeyEngine, copyright jMonkeyEngine and 
+ * licensed under New BSD License.
+ * 
+ * =\/==========================================================================
+ * 
  * Copyright (c) 2009-2012 jMonkeyEngine
  * All rights reserved.
  *
@@ -37,7 +56,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * 
  */
-
 package com.sudoplay.math;
 
 import java.util.Random;
@@ -47,7 +65,7 @@ import java.util.Random;
  * Math functions. These are all used as static values and functions.
  * 
  * @author Various (original for JME)
- * @author Jason Taylor (modified for LSS)
+ * @author Jason Taylor (modified)
  * 
  */
 public final class FastMath {
@@ -231,9 +249,12 @@ public final class FastMath {
    * @return
    */
   public static float interpolateLinear(float t, float y1, float y2) {
-    if (y1 == y2) return y1;
-    if (t <= 0.0f) return y1;
-    if (t >= 1.0f) return y2;
+    if (y1 == y2)
+      return y1;
+    if (t <= 0.0f)
+      return y1;
+    if (t >= 1.0f)
+      return y2;
     return (y1 * (1 - t)) + (y2 * t);
   }
 
@@ -902,8 +923,10 @@ public final class FastMath {
    * @return The integer's sign
    */
   public static int sign(int value) {
-    if (value > 0) return 1;
-    if (value < 0) return -1;
+    if (value > 0)
+      return 1;
+    if (value < 0)
+      return -1;
     return 0;
   }
 
@@ -1024,17 +1047,17 @@ public final class FastMath {
    */
   public static float convertHalfToFloat(short half) {
     switch ((int) half) {
-      case 0x0000:
-        return 0f;
-      case 0x8000:
-        return -0f;
-      case 0x7c00:
-        return Float.POSITIVE_INFINITY;
-      case 0xfc00:
-        return Float.NEGATIVE_INFINITY;
-        // TODO: Support for NaN?
-      default:
-        return Float.intBitsToFloat(((half & 0x8000) << 16) | (((half & 0x7c00) + 0x1C000) << 13) | ((half & 0x03FF) << 13));
+    case 0x0000:
+      return 0f;
+    case 0x8000:
+      return -0f;
+    case 0x7c00:
+      return Float.POSITIVE_INFINITY;
+    case 0xfc00:
+      return Float.NEGATIVE_INFINITY;
+      // TODO: Support for NaN?
+    default:
+      return Float.intBitsToFloat(((half & 0x8000) << 16) | (((half & 0x7c00) + 0x1C000) << 13) | ((half & 0x03FF) << 13));
     }
   }
 
@@ -1108,7 +1131,8 @@ public final class FastMath {
    */
   public static Vector3f sphericalToCartesian(float radius, float inclination, float azimuth, Vector3f store) {
 
-    if (store == null) store = new Vector3f();
+    if (store == null)
+      store = new Vector3f();
 
     store.y = radius * FastMath.sin(inclination);
     float a = radius * FastMath.cos(inclination);

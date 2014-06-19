@@ -1,11 +1,30 @@
 /*
- * Many of the methods in this class have been derived from the
- * jMonkyEngine class and adapted for use within the LSS 
- * game engine. Therefore, the following is provided:
+ * Copyright (C) 2014 Jason Taylor.
+ * Released as open-source under the Apache License, Version 2.0.
  * 
- */
-
-/*
+ * =\/==========================================================================
+ * 
+ * Copyright (C) 2014 Jason Taylor
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * =============================================================================
+ * 
+ * This class contains code from jMonkeyEngine, copyright jMonkeyEngine and 
+ * licensed under New BSD License.
+ * 
+ * =\/==========================================================================
+ * 
  * Copyright (c) 2009-2012 jMonkeyEngine
  * All rights reserved.
  *
@@ -35,6 +54,7 @@
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * 
  */
 package com.sudoplay.math;
 
@@ -54,7 +74,7 @@ import java.nio.FloatBuffer;
  * 
  * @author Mark Powell (original for JME)
  * @author Joshua Slack (original for JME)
- * @author Jason Taylor (modified for LSS)
+ * @author Jason Taylor (modified)
  */
 public final class Matrix4f {
 
@@ -281,50 +301,50 @@ public final class Matrix4f {
   @SuppressWarnings("fallthrough")
   public float get(int i, int j) {
     switch (i) {
+    case 0:
+      switch (j) {
       case 0:
-        switch (j) {
-          case 0:
-            return m00;
-          case 1:
-            return m01;
-          case 2:
-            return m02;
-          case 3:
-            return m03;
-        }
+        return m00;
       case 1:
-        switch (j) {
-          case 0:
-            return m10;
-          case 1:
-            return m11;
-          case 2:
-            return m12;
-          case 3:
-            return m13;
-        }
+        return m01;
       case 2:
-        switch (j) {
-          case 0:
-            return m20;
-          case 1:
-            return m21;
-          case 2:
-            return m22;
-          case 3:
-            return m23;
-        }
+        return m02;
       case 3:
-        switch (j) {
-          case 0:
-            return m30;
-          case 1:
-            return m31;
-          case 2:
-            return m32;
-          case 3:
-            return m33;
-        }
+        return m03;
+      }
+    case 1:
+      switch (j) {
+      case 0:
+        return m10;
+      case 1:
+        return m11;
+      case 2:
+        return m12;
+      case 3:
+        return m13;
+      }
+    case 2:
+      switch (j) {
+      case 0:
+        return m20;
+      case 1:
+        return m21;
+      case 2:
+        return m22;
+      case 3:
+        return m23;
+      }
+    case 3:
+      switch (j) {
+      case 0:
+        return m30;
+      case 1:
+        return m31;
+      case 2:
+        return m32;
+      case 3:
+        return m33;
+      }
     }
 
     throw new IllegalArgumentException("Invalid indices into matrix.");
@@ -358,32 +378,32 @@ public final class Matrix4f {
       store = new float[4];
     }
     switch (i) {
-      case 0:
-        store[0] = m00;
-        store[1] = m10;
-        store[2] = m20;
-        store[3] = m30;
-        break;
-      case 1:
-        store[0] = m01;
-        store[1] = m11;
-        store[2] = m21;
-        store[3] = m31;
-        break;
-      case 2:
-        store[0] = m02;
-        store[1] = m12;
-        store[2] = m22;
-        store[3] = m32;
-        break;
-      case 3:
-        store[0] = m03;
-        store[1] = m13;
-        store[2] = m23;
-        store[3] = m33;
-        break;
-      default:
-        throw new IllegalArgumentException("Invalid column index. " + i);
+    case 0:
+      store[0] = m00;
+      store[1] = m10;
+      store[2] = m20;
+      store[3] = m30;
+      break;
+    case 1:
+      store[0] = m01;
+      store[1] = m11;
+      store[2] = m21;
+      store[3] = m31;
+      break;
+    case 2:
+      store[0] = m02;
+      store[1] = m12;
+      store[2] = m22;
+      store[3] = m32;
+      break;
+    case 3:
+      store[0] = m03;
+      store[1] = m13;
+      store[2] = m23;
+      store[3] = m33;
+      break;
+    default:
+      throw new IllegalArgumentException("Invalid column index. " + i);
     }
     return store;
   }
@@ -401,28 +421,28 @@ public final class Matrix4f {
       store = new Vector3f();
     }
     switch (i) {
-      case 0:
-        store.x = m00;
-        store.y = m10;
-        store.z = m20;
-        break;
-      case 1:
-        store.x = m01;
-        store.y = m11;
-        store.z = m21;
-        break;
-      case 2:
-        store.x = m02;
-        store.y = m12;
-        store.z = m22;
-        break;
-      case 3:
-        store.x = m03;
-        store.y = m13;
-        store.z = m23;
-        break;
-      default:
-        throw new IllegalArgumentException("Invalid column index. " + i);
+    case 0:
+      store.x = m00;
+      store.y = m10;
+      store.z = m20;
+      break;
+    case 1:
+      store.x = m01;
+      store.y = m11;
+      store.z = m21;
+      break;
+    case 2:
+      store.x = m02;
+      store.y = m12;
+      store.z = m22;
+      break;
+    case 3:
+      store.x = m03;
+      store.y = m13;
+      store.z = m23;
+      break;
+    default:
+      throw new IllegalArgumentException("Invalid column index. " + i);
     }
     return store;
   }
@@ -440,32 +460,32 @@ public final class Matrix4f {
       store = new Vector4f();
     }
     switch (i) {
-      case 0:
-        store.x = m00;
-        store.y = m10;
-        store.z = m20;
-        store.w = m30;
-        break;
-      case 1:
-        store.x = m01;
-        store.y = m11;
-        store.z = m21;
-        store.w = m31;
-        break;
-      case 2:
-        store.x = m02;
-        store.y = m12;
-        store.z = m22;
-        store.w = m32;
-        break;
-      case 3:
-        store.x = m03;
-        store.y = m13;
-        store.z = m23;
-        store.w = m33;
-        break;
-      default:
-        throw new IllegalArgumentException("Invalid column index. " + i);
+    case 0:
+      store.x = m00;
+      store.y = m10;
+      store.z = m20;
+      store.w = m30;
+      break;
+    case 1:
+      store.x = m01;
+      store.y = m11;
+      store.z = m21;
+      store.w = m31;
+      break;
+    case 2:
+      store.x = m02;
+      store.y = m12;
+      store.z = m22;
+      store.w = m32;
+      break;
+    case 3:
+      store.x = m03;
+      store.y = m13;
+      store.z = m23;
+      store.w = m33;
+      break;
+    default:
+      throw new IllegalArgumentException("Invalid column index. " + i);
     }
     return store;
   }
@@ -486,32 +506,32 @@ public final class Matrix4f {
       return;
     }
     switch (i) {
-      case 0:
-        m00 = column[0];
-        m10 = column[1];
-        m20 = column[2];
-        m30 = column[3];
-        break;
-      case 1:
-        m01 = column[0];
-        m11 = column[1];
-        m21 = column[2];
-        m31 = column[3];
-        break;
-      case 2:
-        m02 = column[0];
-        m12 = column[1];
-        m22 = column[2];
-        m32 = column[3];
-        break;
-      case 3:
-        m03 = column[0];
-        m13 = column[1];
-        m23 = column[2];
-        m33 = column[3];
-        break;
-      default:
-        throw new IllegalArgumentException("Invalid column index. " + i);
+    case 0:
+      m00 = column[0];
+      m10 = column[1];
+      m20 = column[2];
+      m30 = column[3];
+      break;
+    case 1:
+      m01 = column[0];
+      m11 = column[1];
+      m21 = column[2];
+      m31 = column[3];
+      break;
+    case 2:
+      m02 = column[0];
+      m12 = column[1];
+      m22 = column[2];
+      m32 = column[3];
+      break;
+    case 3:
+      m03 = column[0];
+      m13 = column[1];
+      m23 = column[2];
+      m33 = column[3];
+      break;
+    default:
+      throw new IllegalArgumentException("Invalid column index. " + i);
     }
   }
 
@@ -528,32 +548,32 @@ public final class Matrix4f {
       store = new Vector4f();
     }
     switch (i) {
-      case 0:
-        store.x = m00;
-        store.y = m01;
-        store.z = m02;
-        store.w = m03;
-        break;
-      case 1:
-        store.x = m10;
-        store.y = m11;
-        store.z = m12;
-        store.w = m13;
-        break;
-      case 2:
-        store.x = m20;
-        store.y = m21;
-        store.z = m22;
-        store.w = m23;
-        break;
-      case 3:
-        store.x = m30;
-        store.y = m31;
-        store.z = m32;
-        store.w = m33;
-        break;
-      default:
-        throw new IllegalArgumentException("Invalid row index. " + i);
+    case 0:
+      store.x = m00;
+      store.y = m01;
+      store.z = m02;
+      store.w = m03;
+      break;
+    case 1:
+      store.x = m10;
+      store.y = m11;
+      store.z = m12;
+      store.w = m13;
+      break;
+    case 2:
+      store.x = m20;
+      store.y = m21;
+      store.z = m22;
+      store.w = m23;
+      break;
+    case 3:
+      store.x = m30;
+      store.y = m31;
+      store.z = m32;
+      store.w = m33;
+      break;
+    default:
+      throw new IllegalArgumentException("Invalid row index. " + i);
     }
     return store;
   }
@@ -572,66 +592,66 @@ public final class Matrix4f {
   @SuppressWarnings("fallthrough")
   public void set(int i, int j, float value) {
     switch (i) {
+    case 0:
+      switch (j) {
       case 0:
-        switch (j) {
-          case 0:
-            m00 = value;
-            return;
-          case 1:
-            m01 = value;
-            return;
-          case 2:
-            m02 = value;
-            return;
-          case 3:
-            m03 = value;
-            return;
-        }
+        m00 = value;
+        return;
       case 1:
-        switch (j) {
-          case 0:
-            m10 = value;
-            return;
-          case 1:
-            m11 = value;
-            return;
-          case 2:
-            m12 = value;
-            return;
-          case 3:
-            m13 = value;
-            return;
-        }
+        m01 = value;
+        return;
       case 2:
-        switch (j) {
-          case 0:
-            m20 = value;
-            return;
-          case 1:
-            m21 = value;
-            return;
-          case 2:
-            m22 = value;
-            return;
-          case 3:
-            m23 = value;
-            return;
-        }
+        m02 = value;
+        return;
       case 3:
-        switch (j) {
-          case 0:
-            m30 = value;
-            return;
-          case 1:
-            m31 = value;
-            return;
-          case 2:
-            m32 = value;
-            return;
-          case 3:
-            m33 = value;
-            return;
-        }
+        m03 = value;
+        return;
+      }
+    case 1:
+      switch (j) {
+      case 0:
+        m10 = value;
+        return;
+      case 1:
+        m11 = value;
+        return;
+      case 2:
+        m12 = value;
+        return;
+      case 3:
+        m13 = value;
+        return;
+      }
+    case 2:
+      switch (j) {
+      case 0:
+        m20 = value;
+        return;
+      case 1:
+        m21 = value;
+        return;
+      case 2:
+        m22 = value;
+        return;
+      case 3:
+        m23 = value;
+        return;
+      }
+    case 3:
+      switch (j) {
+      case 0:
+        m30 = value;
+        return;
+      case 1:
+        m31 = value;
+        return;
+      case 2:
+        m32 = value;
+        return;
+      case 3:
+        m33 = value;
+        return;
+      }
     }
 
     throw new IllegalArgumentException("Invalid indices into matrix.");

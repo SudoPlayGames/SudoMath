@@ -1,11 +1,30 @@
 /*
- * Many of the methods in this class have been derived from the
- * jMonkyEngine class and adapted for use within the LSS 
- * game engine. Therefore, the following is provided:
+ * Copyright (C) 2014 Jason Taylor.
+ * Released as open-source under the Apache License, Version 2.0.
  * 
- */
-
-/*
+ * =\/==========================================================================
+ * 
+ * Copyright (C) 2014 Jason Taylor
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * =============================================================================
+ * 
+ * This class contains code from jMonkeyEngine, copyright jMonkeyEngine and 
+ * licensed under New BSD License.
+ * 
+ * =\/==========================================================================
+ * 
  * Copyright (c) 2009-2012 jMonkeyEngine
  * All rights reserved.
  *
@@ -35,6 +54,7 @@
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * 
  */
 package com.sudoplay.math;
 
@@ -48,7 +68,7 @@ import java.nio.FloatBuffer;
  * 
  * @author Mark Powell (original for JME)
  * @author Joshua Slack (original for JME)
- * @author Jason Taylor (modified for LSS)
+ * @author Jason Taylor (modified)
  */
 public final class Matrix3f {
 
@@ -172,33 +192,33 @@ public final class Matrix3f {
   @SuppressWarnings("fallthrough")
   public float get(int i, int j) {
     switch (i) {
+    case 0:
+      switch (j) {
       case 0:
-        switch (j) {
-          case 0:
-            return m00;
-          case 1:
-            return m01;
-          case 2:
-            return m02;
-        }
+        return m00;
       case 1:
-        switch (j) {
-          case 0:
-            return m10;
-          case 1:
-            return m11;
-          case 2:
-            return m12;
-        }
+        return m01;
       case 2:
-        switch (j) {
-          case 0:
-            return m20;
-          case 1:
-            return m21;
-          case 2:
-            return m22;
-        }
+        return m02;
+      }
+    case 1:
+      switch (j) {
+      case 0:
+        return m10;
+      case 1:
+        return m11;
+      case 2:
+        return m12;
+      }
+    case 2:
+      switch (j) {
+      case 0:
+        return m20;
+      case 1:
+        return m21;
+      case 2:
+        return m22;
+      }
     }
 
     throw new IllegalArgumentException("Invalid indices into matrix.");
@@ -337,23 +357,23 @@ public final class Matrix3f {
       store = new Vector3f();
     }
     switch (i) {
-      case 0:
-        store.x = m00;
-        store.y = m10;
-        store.z = m20;
-        break;
-      case 1:
-        store.x = m01;
-        store.y = m11;
-        store.z = m21;
-        break;
-      case 2:
-        store.x = m02;
-        store.y = m12;
-        store.z = m22;
-        break;
-      default:
-        throw new IllegalArgumentException("Invalid column index. " + i);
+    case 0:
+      store.x = m00;
+      store.y = m10;
+      store.z = m20;
+      break;
+    case 1:
+      store.x = m01;
+      store.y = m11;
+      store.z = m21;
+      break;
+    case 2:
+      store.x = m02;
+      store.y = m12;
+      store.z = m22;
+      break;
+    default:
+      throw new IllegalArgumentException("Invalid column index. " + i);
     }
     return store;
   }
@@ -386,23 +406,23 @@ public final class Matrix3f {
       store = new Vector3f();
     }
     switch (i) {
-      case 0:
-        store.x = m00;
-        store.y = m01;
-        store.z = m02;
-        break;
-      case 1:
-        store.x = m10;
-        store.y = m11;
-        store.z = m12;
-        break;
-      case 2:
-        store.x = m20;
-        store.y = m21;
-        store.z = m22;
-        break;
-      default:
-        throw new IllegalArgumentException("Invalid row index. " + i);
+    case 0:
+      store.x = m00;
+      store.y = m01;
+      store.z = m02;
+      break;
+    case 1:
+      store.x = m10;
+      store.y = m11;
+      store.z = m12;
+      break;
+    case 2:
+      store.x = m20;
+      store.y = m21;
+      store.z = m22;
+      break;
+    default:
+      throw new IllegalArgumentException("Invalid row index. " + i);
     }
     return store;
   }
@@ -468,23 +488,23 @@ public final class Matrix3f {
       return this;
     }
     switch (i) {
-      case 0:
-        m00 = column.x;
-        m10 = column.y;
-        m20 = column.z;
-        break;
-      case 1:
-        m01 = column.x;
-        m11 = column.y;
-        m21 = column.z;
-        break;
-      case 2:
-        m02 = column.x;
-        m12 = column.y;
-        m22 = column.z;
-        break;
-      default:
-        throw new IllegalArgumentException("Invalid column index. " + i);
+    case 0:
+      m00 = column.x;
+      m10 = column.y;
+      m20 = column.z;
+      break;
+    case 1:
+      m01 = column.x;
+      m11 = column.y;
+      m21 = column.z;
+      break;
+    case 2:
+      m02 = column.x;
+      m12 = column.y;
+      m22 = column.z;
+      break;
+    default:
+      throw new IllegalArgumentException("Invalid column index. " + i);
     }
     return this;
   }
@@ -506,23 +526,23 @@ public final class Matrix3f {
       return this;
     }
     switch (i) {
-      case 0:
-        m00 = row.x;
-        m01 = row.y;
-        m02 = row.z;
-        break;
-      case 1:
-        m10 = row.x;
-        m11 = row.y;
-        m12 = row.z;
-        break;
-      case 2:
-        m20 = row.x;
-        m21 = row.y;
-        m22 = row.z;
-        break;
-      default:
-        throw new IllegalArgumentException("Invalid row index. " + i);
+    case 0:
+      m00 = row.x;
+      m01 = row.y;
+      m02 = row.z;
+      break;
+    case 1:
+      m10 = row.x;
+      m11 = row.y;
+      m12 = row.z;
+      break;
+    case 2:
+      m20 = row.x;
+      m21 = row.y;
+      m22 = row.z;
+      break;
+    default:
+      throw new IllegalArgumentException("Invalid row index. " + i);
     }
     return this;
   }
@@ -542,42 +562,42 @@ public final class Matrix3f {
   @SuppressWarnings("fallthrough")
   public Matrix3f set(int i, int j, float value) {
     switch (i) {
+    case 0:
+      switch (j) {
       case 0:
-        switch (j) {
-          case 0:
-            m00 = value;
-            return this;
-          case 1:
-            m01 = value;
-            return this;
-          case 2:
-            m02 = value;
-            return this;
-        }
+        m00 = value;
+        return this;
       case 1:
-        switch (j) {
-          case 0:
-            m10 = value;
-            return this;
-          case 1:
-            m11 = value;
-            return this;
-          case 2:
-            m12 = value;
-            return this;
-        }
+        m01 = value;
+        return this;
       case 2:
-        switch (j) {
-          case 0:
-            m20 = value;
-            return this;
-          case 1:
-            m21 = value;
-            return this;
-          case 2:
-            m22 = value;
-            return this;
-        }
+        m02 = value;
+        return this;
+      }
+    case 1:
+      switch (j) {
+      case 0:
+        m10 = value;
+        return this;
+      case 1:
+        m11 = value;
+        return this;
+      case 2:
+        m12 = value;
+        return this;
+      }
+    case 2:
+      switch (j) {
+      case 0:
+        m20 = value;
+        return this;
+      case 1:
+        m21 = value;
+        return this;
+      case 2:
+        m22 = value;
+        return this;
+      }
     }
 
     throw new IllegalArgumentException("Invalid indices into matrix.");
@@ -1221,8 +1241,8 @@ public final class Matrix3f {
    *          normalized non-zero starting vector
    * @param end
    *          normalized non-zero ending vector
-   * @see "Tomas M�ller, John Hughes \"Efficiently Building a Matrix to Rotate
-   *      \ One Vector to Another\" Journal of Graphics Tools, 4(4):1-4, 1999"
+   * @see "Tomas M�ller, John Hughes \"Efficiently Building a Matrix to Rotate \
+   *      One Vector to Another\" Journal of Graphics Tools, 4(4):1-4, 1999"
    */
   public void fromStartEndVectors(Vector3f start, Vector3f end) {
     Vector3f v = new Vector3f();

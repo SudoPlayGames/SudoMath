@@ -1,7 +1,67 @@
+/*
+ * Copyright (C) 2014 Jason Taylor.
+ * Released as open-source under the Apache License, Version 2.0.
+ * 
+ * =\/==========================================================================
+ * 
+ * Copyright (C) 2014 Jason Taylor
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * =============================================================================
+ * 
+ * This class contains code derived from http://www.robertpenner.com/easing/, 
+ * copyright Robert Penner and licensed under BSD.
+ * 
+ * =\/==========================================================================
+ * 
+ * Copyright (c) 2001 Robert Penner
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are
+ * met:
+ *
+ * * Redistributions of source code must retain the above copyright
+ *   notice, this list of conditions and the following disclaimer.
+ *
+ * * Redistributions in binary form must reproduce the above copyright
+ *   notice, this list of conditions and the following disclaimer in the
+ *   documentation and/or other materials provided with the distribution.
+ *
+ * * Neither the name of the author nor the names of its contributors
+ *   may be used to endorse or promote products derived from this software
+ *   without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * 
+ */
 package com.sudoplay.math;
 
 /**
- * Borrowed from here: http://www.robertpenner.com/easing/
+ * Common tweening functions.
+ * 
+ * @author Jason Taylor
  */
 public abstract class Tween {
 
@@ -713,9 +773,12 @@ public abstract class Tween {
   public static final Tween EASE_INOUT_EXPONENTIAL = new Tween() {
     @Override
     public float tween(float t, float b, float c, float d) {
-      if (t == 0) return b;
-      if (t == d) return b + c;
-      if ((t /= d / 2) < 1) return c / 2 * FastMath.pow(2, 10 * (t - 1)) + b;
+      if (t == 0)
+        return b;
+      if (t == d)
+        return b + c;
+      if ((t /= d / 2) < 1)
+        return c / 2 * FastMath.pow(2, 10 * (t - 1)) + b;
       return c / 2 * (-FastMath.pow(2, -10 * --t) + 2) + b;
     }
   };
@@ -734,9 +797,12 @@ public abstract class Tween {
    * @return
    */
   public static final float easeInOutExponential(float t, float b, float c, float d) {
-    if (t == 0) return b;
-    if (t == d) return b + c;
-    if ((t /= d / 2) < 1) return c / 2 * FastMath.pow(2, 10 * (t - 1)) + b;
+    if (t == 0)
+      return b;
+    if (t == d)
+      return b + c;
+    if ((t /= d / 2) < 1)
+      return c / 2 * FastMath.pow(2, 10 * (t - 1)) + b;
     return c / 2 * (-FastMath.pow(2, -10 * --t) + 2) + b;
   }
 
@@ -873,8 +939,10 @@ public abstract class Tween {
   public static final Tween EASE_IN_ELASTIC = new Tween() {
     @Override
     public float tween(float t, float b, float c, float d) {
-      if (t == 0) return b;
-      if ((t /= d) == 1) return b + c;
+      if (t == 0)
+        return b;
+      if ((t /= d) == 1)
+        return b + c;
       float p = d * 0.3f;
       float s = p / 4;
       return -(c * FastMath.pow(2, 10 * (t -= 1)) * TrigLUT.sin((t * d - s) * FastMath.TWO_PI / p)) + b;
@@ -916,9 +984,12 @@ public abstract class Tween {
    * @return
    */
   public static final float easeInElastic(float t, float b, float c, float d, float a, float p) {
-    if (t == 0) return b;
-    if ((t /= d) == 1) return b + c;
-    if (p == 0) p = d * 0.3f;
+    if (t == 0)
+      return b;
+    if ((t /= d) == 1)
+      return b + c;
+    if (p == 0)
+      p = d * 0.3f;
     float s;
     if (a < FastMath.abs(c)) {
       a = c;
@@ -945,8 +1016,10 @@ public abstract class Tween {
   public static final Tween EASE_OUT_ELASTIC = new Tween() {
     @Override
     public float tween(float t, float b, float c, float d) {
-      if (t == 0) return b;
-      if ((t /= d) == 1) return b + c;
+      if (t == 0)
+        return b;
+      if ((t /= d) == 1)
+        return b + c;
       float p = d * 0.3f;
       float s = p / 4;
       return c * FastMath.pow(2, -10 * t) * TrigLUT.sin((t * d - s) * FastMath.TWO_PI / p) + c + b;
@@ -988,9 +1061,12 @@ public abstract class Tween {
    * @return
    */
   public static final float easeOutElastic(float t, float b, float c, float d, float a, float p) {
-    if (t == 0) return b;
-    if ((t /= d) == 1) return b + c;
-    if (p == 0) p = d * 0.3f;
+    if (t == 0)
+      return b;
+    if ((t /= d) == 1)
+      return b + c;
+    if (p == 0)
+      p = d * 0.3f;
     float s;
     if (a < FastMath.abs(c)) {
       a = c;
@@ -1017,8 +1093,10 @@ public abstract class Tween {
   public static final Tween EASE_INOUT_ELASTIC = new Tween() {
     @Override
     public float tween(float t, float b, float c, float d) {
-      if (t == 0) return b;
-      if ((t /= d / 2) == 2) return b + c;
+      if (t == 0)
+        return b;
+      if ((t /= d / 2) == 2)
+        return b + c;
       float p = d * (0.3f * 1.5f);
       float s = p / 4;
       if (t < 1) {
@@ -1063,9 +1141,12 @@ public abstract class Tween {
    * @return
    */
   public static final float easeInOutElastic(float t, float b, float c, float d, float a, float p) {
-    if (t == 0) return b;
-    if ((t /= d / 2) == 2) return b + c;
-    if (p == 0) p = d * (0.3f * 1.5f);
+    if (t == 0)
+      return b;
+    if ((t /= d / 2) == 2)
+      return b + c;
+    if (p == 0)
+      p = d * (0.3f * 1.5f);
     float s;
     if (a < Math.abs(c)) {
       a = c;

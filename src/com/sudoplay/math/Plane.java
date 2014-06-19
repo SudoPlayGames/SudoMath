@@ -1,11 +1,30 @@
 /*
- * Many of the methods in this class have been derived from the
- * jMonkyEngine class and adapted for use within the LSS 
- * game engine. Therefore, the following is provided:
+ * Copyright (C) 2014 Jason Taylor.
+ * Released as open-source under the Apache License, Version 2.0.
  * 
- */
-
-/*
+ * =\/==========================================================================
+ * 
+ * Copyright (C) 2014 Jason Taylor
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * =============================================================================
+ * 
+ * This class contains code from jMonkeyEngine, copyright jMonkeyEngine and 
+ * licensed under New BSD License.
+ * 
+ * =\/==========================================================================
+ * 
  * Copyright (c) 2009-2012 jMonkeyEngine
  * All rights reserved.
  *
@@ -35,6 +54,7 @@
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * 
  */
 package com.sudoplay.math;
 
@@ -46,7 +66,7 @@ package com.sudoplay.math;
  * 
  * @author Mark Powell (original for JME)
  * @author Joshua Slack (original for JME)
- * @author Jason Taylor (modified for LSS)
+ * @author Jason Taylor (modified)
  */
 public class Plane {
 
@@ -68,7 +88,8 @@ public class Plane {
    * Constructor instantiates a new {@code Plane} object. This is the default
    * object and contains a normal of (0,0,0) and a constant of 0.
    */
-  public Plane() {}
+  public Plane() {
+  }
 
   /**
    * Constructor instantiates a new {@code Plane} object. The normal and
@@ -161,7 +182,8 @@ public class Plane {
   }
 
   public Vector3f reflect(Vector3f point, Vector3f store) {
-    if (store == null) store = new Vector3f();
+    if (store == null)
+      store = new Vector3f();
 
     float d = pseudoDistance(point);
     store.set(normal).negateLocal().multLocal(d * 2f);
@@ -209,16 +231,6 @@ public class Plane {
     else
       return false;
   }
-
-  /**
-   * Initialize this plane using the three points of the given triangle.
-   * 
-   * @param t
-   *          the triangle
-   */
-  // public void setPlanePoints(AbstractTriangle t) {
-  // setPlanePoints(t.get1(), t.get2(), t.get3());
-  // }
 
   /**
    * Initialize this plane using a point of origin and a normal.

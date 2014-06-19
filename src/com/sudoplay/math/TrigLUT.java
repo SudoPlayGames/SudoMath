@@ -1,8 +1,47 @@
+/*
+ * Copyright (C) 2014 Jason Taylor.
+ * Released as open-source under the Apache License, Version 2.0.
+ * 
+ * =\/==========================================================================
+ * 
+ * Copyright (C) 2014 Jason Taylor
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * =============================================================================
+ * 
+ * This class contains code from http://riven8192.blogspot.com, copyright Riven
+ * and licensed under CC BY 3.0.
+ * 
+ * =\/==========================================================================
+ * 
+ * Copyright (c) 2009, 2012 + any other year Riven
+ * All rights reserved.
+ *
+ * http://creativecommons.org/licenses/by/3.0/
+ * 
+ */
 package com.sudoplay.math;
 
-// Thanks to Riven
-// From: http://riven8192.blogspot.com/2009/08/fastmath-sincos-lookup-tables.html
+/**
+ * Thanks to Riven:
+ * <p>
+ * http://riven8192.blogspot.com/2009/08/fastmath-sincos-lookup-tables.html
+ * 
+ * @author Riven
+ */
 public class TrigLUT {
+
   public static void main(String[] args) {
     System.out.println(cos((float) Math.PI));
     System.out.println(cosDeg(180f));

@@ -1,11 +1,30 @@
 /*
- * Many of the methods in this class have been derived from the
- * jMonkyEngine class and adapted for use within the LSS 
- * game engine. Therefore, the following is provided:
+ * Copyright (C) 2014 Jason Taylor.
+ * Released as open-source under the Apache License, Version 2.0.
  * 
- */
-
-/*
+ * =\/==========================================================================
+ * 
+ * Copyright (C) 2014 Jason Taylor
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * =============================================================================
+ * 
+ * This class contains code from jMonkeyEngine, copyright jMonkeyEngine and 
+ * licensed under New BSD License.
+ * 
+ * =\/==========================================================================
+ * 
  * Copyright (c) 2009-2012 jMonkeyEngine
  * All rights reserved.
  *
@@ -35,6 +54,7 @@
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * 
  */
 package com.sudoplay.math;
 
@@ -43,7 +63,7 @@ package com.sudoplay.math;
  * 
  * @author Mark Powell (original for JME)
  * @author Joshua Slack (original for JME)
- * @author Jason Taylor (modified for LSS)
+ * @author Jason Taylor (modified)
  */
 public final class Vector2f {
 
@@ -192,7 +212,8 @@ public final class Vector2f {
     if (null == vec) {
       return null;
     }
-    if (result == null) result = new Vector2f();
+    if (result == null)
+      result = new Vector2f();
     result.x = x + vec.x;
     result.y = y + vec.y;
     return result;
@@ -272,9 +293,12 @@ public final class Vector2f {
    * @return true or false as stated above.
    */
   public static boolean isValidVector(Vector2f vector) {
-    if (vector == null) return false;
-    if (Float.isNaN(vector.x) || Float.isNaN(vector.y)) return false;
-    if (Float.isInfinite(vector.x) || Float.isInfinite(vector.y)) return false;
+    if (vector == null)
+      return false;
+    if (Float.isNaN(vector.x) || Float.isNaN(vector.y))
+      return false;
+    if (Float.isInfinite(vector.x) || Float.isInfinite(vector.y))
+      return false;
     return true;
   }
 
@@ -477,7 +501,8 @@ public final class Vector2f {
    * @return the result vector.
    */
   public Vector2f subtract(Vector2f vec, Vector2f store) {
-    if (store == null) store = new Vector2f();
+    if (store == null)
+      store = new Vector2f();
     store.x = x - vec.x;
     store.y = y - vec.y;
     return store;
@@ -684,8 +709,10 @@ public final class Vector2f {
     }
 
     Vector2f comp = (Vector2f) o;
-    if (Float.compare(x, comp.x) != 0) return false;
-    if (Float.compare(y, comp.y) != 0) return false;
+    if (Float.compare(x, comp.x) != 0)
+      return false;
+    if (Float.compare(y, comp.y) != 0)
+      return false;
     return true;
   }
 
@@ -701,7 +728,8 @@ public final class Vector2f {
   }
 
   public void rotateAroundOrigin(float angle, boolean cw) {
-    if (cw) angle = -angle;
+    if (cw)
+      angle = -angle;
     float newX = FastMath.cos(angle) * x - FastMath.sin(angle) * y;
     float newY = FastMath.sin(angle) * x + FastMath.cos(angle) * y;
     x = newX;

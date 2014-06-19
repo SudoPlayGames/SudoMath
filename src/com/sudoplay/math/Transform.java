@@ -1,4 +1,30 @@
 /*
+ * Copyright (C) 2014 Jason Taylor.
+ * Released as open-source under the Apache License, Version 2.0.
+ * 
+ * =\/==========================================================================
+ * 
+ * Copyright (C) 2014 Jason Taylor
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * =============================================================================
+ * 
+ * This class contains code from jMonkeyEngine, copyright jMonkeyEngine and 
+ * licensed under New BSD License.
+ * 
+ * =\/==========================================================================
+ * 
  * Copyright (c) 2009-2012 jMonkeyEngine
  * All rights reserved.
  *
@@ -28,6 +54,7 @@
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * 
  */
 package com.sudoplay.math;
 
@@ -36,7 +63,7 @@ package com.sudoplay.math;
  * 
  * @author Jack Lindamood (original for JME)
  * @author Joshua Slack (original for JME)
- * @author Jason Taylor (modified for LSS)
+ * @author Jason Taylor (modified)
  */
 public final class Transform implements Cloneable, java.io.Serializable {
 
@@ -146,7 +173,8 @@ public final class Transform implements Cloneable, java.io.Serializable {
    * @return The value of this matrix's translation.
    */
   public Vector3f getTranslation(Vector3f trans) {
-    if (trans == null) trans = new Vector3f();
+    if (trans == null)
+      trans = new Vector3f();
     trans.set(this.translation);
     return trans;
   }
@@ -161,7 +189,8 @@ public final class Transform implements Cloneable, java.io.Serializable {
    * @return The value of this matrix's rotation.
    */
   public Quaternion getRotation(Quaternion quat) {
-    if (quat == null) quat = new Quaternion();
+    if (quat == null)
+      quat = new Quaternion();
     quat.set(rot);
     return quat;
   }
@@ -184,7 +213,8 @@ public final class Transform implements Cloneable, java.io.Serializable {
    * @return The value of this matrix's scale.
    */
   public Vector3f getScale(Vector3f scale) {
-    if (scale == null) scale = new Vector3f();
+    if (scale == null)
+      scale = new Vector3f();
     scale.set(this.scale);
     return scale;
   }
@@ -217,16 +247,7 @@ public final class Transform implements Cloneable, java.io.Serializable {
    */
   public Transform combineWithParent(Transform parent) {
     scale.multLocal(parent.scale);
-    // rot.multLocal(parent.rot);
     parent.rot.mult(rot, rot);
-
-    // This here, is evil code
-    // parent
-    // .rot
-    // .multLocal(translation)
-    // .multLocal(parent.scale)
-    // .addLocal(parent.translation);
-
     translation.multLocal(parent.scale);
     parent.rot.multLocal(translation).addLocal(parent.translation);
     return this;
@@ -265,25 +286,19 @@ public final class Transform implements Cloneable, java.io.Serializable {
   }
 
   public Vector3f transformVector(final Vector3f in, Vector3f store) {
-    if (store == null) store = new Vector3f();
-
-    // multiply with scale first, then rotate, finally translate (cf.
-    // Eberly)
+    if (store == null) {
+      store = new Vector3f();
+    }
     return rot.mult(store.set(in).multLocal(scale), store).addLocal(translation);
   }
 
   public Vector3f transformInverseVector(final Vector3f in, Vector3f store) {
-    if (store == null) store = new Vector3f();
-
-    // The author of this code should look above and take the inverse of that
-    // But for some reason, they didnt ..
-    // in.subtract(translation, store).divideLocal(scale);
-    // rot.inverse().mult(store, store);
-
+    if (store == null) {
+      store = new Vector3f();
+    }
     in.subtract(translation, store);
     rot.inverse().mult(store, store);
     store.divideLocal(scale);
-
     return store;
   }
 
@@ -303,16 +318,16 @@ public final class Transform implements Cloneable, java.io.Serializable {
   }
 
   /**
-   * Sets this matrix to be equal to the given matrix.
+   * Sets this transform to be equal to the given transform.
    * 
-   * @param matrixQuat
-   *          The matrix to be equal to.
+   * @param transform
+   *          The transform to be equal to.
    * @return this
    */
-  public Transform set(Transform matrixQuat) {
-    this.translation.set(matrixQuat.translation);
-    this.rot.set(matrixQuat.rot);
-    this.scale.set(matrixQuat.scale);
+  public Transform set(Transform transform) {
+    this.translation.set(transform.translation);
+    this.rot.set(transform.rot);
+    this.scale.set(transform.scale);
     return this;
   }
 
