@@ -7,6 +7,7 @@ Portions of SudoMath contain code from the following:
  * [jMonkeyEngine](https://github.com/jMonkeyEngine/jmonkeyengine)
  * [Robert Penner's Easing Functions](http://www.robertpenner.com/easing/)
  * [Riven's Blog](http://riven8192.blogspot.com)
+ * [jdt](https://code.google.com/p/jdt/)
 
 SudoMath's hexagonal math code was derived from:
 
