@@ -100,6 +100,11 @@ public final class FastMath {
   public static final float ONE_THIRD = 1.0f / 3.0f;
 
   /**
+   * E as a floating point value
+   */
+  public static final float E = (float) Math.E;
+
+  /**
    * PI as a floating point value
    */
   public static final float PI = (float) Math.PI;
@@ -119,6 +124,9 @@ public final class FastMath {
    */
   public static final float QUARTER_PI = 0.25f * PI;
 
+  /**
+   * 3PI/4 as a floating point value
+   */
   public static final float THREE_QUARTER_PI = 0.75f * PI;
 
   /**
@@ -146,12 +154,63 @@ public final class FastMath {
    */
   public static final float RAD_TO_DEG = 180.0f / PI;
 
+  /**
+   * Square root of 3 as a floating point value
+   */
   public static final float SQRT3 = 1.7320508075688772935274463415059f;
 
   /**
    * Pre-generated random object
    */
   public static final Random rand = new Random(System.currentTimeMillis());
+
+  // Used for fastFloor, fastRound, fastCeil
+  // http://riven8192.blogspot.com/2010/02/fastmath-fast-floor.html
+  private static final int BIG_ENOUGH_INT = 16 * 1024;
+  private static final double BIG_ENOUGH_FLOOR = BIG_ENOUGH_INT + 0.0000;
+  private static final double BIG_ENOUGH_ROUND = BIG_ENOUGH_INT + 0.5000;
+  private static final double BIG_ENOUGH_CEIL = BIG_ENOUGH_INT + 0.9999;
+
+  /**
+   * Fast version of {@link FastMath#floor(float)}, faster than
+   * {@link Math#floor(double)}.
+   * <p>
+   * http://riven8192.blogspot.com/2010/02/fastmath-fast-floor.html
+   * 
+   * @param x
+   *          the float to floor
+   * @return the floored float
+   */
+  public static int fastFloor(float x) {
+    return (int) (x + BIG_ENOUGH_FLOOR) - BIG_ENOUGH_INT;
+  }
+
+  /**
+   * Fast version of {@link Math#round(float)}.
+   * <p>
+   * http://riven8192.blogspot.com/2010/02/fastmath-fast-floor.html
+   * 
+   * @param x
+   *          the float to round
+   * @return the rounded float
+   */
+  public static int fastRound(float x) {
+    return (int) (x + BIG_ENOUGH_ROUND) - BIG_ENOUGH_INT;
+  }
+
+  /**
+   * Fast version of {@link FastMath#ceil(float)}, faster than
+   * {@link Math#ceil(double)}.
+   * <p>
+   * http://riven8192.blogspot.com/2010/02/fastmath-fast-floor.html
+   * 
+   * @param x
+   *          the float to ceil
+   * @return the ceil'd float
+   */
+  public static int fastCeil(float x) {
+    return (int) (x + BIG_ENOUGH_CEIL) - BIG_ENOUGH_INT;
+  }
 
   /**
    * If the absolute value of supplied value is less than
@@ -676,6 +735,17 @@ public final class FastMath {
   }
 
   /**
+   * Approximates atan2 with a lookup table
+   * 
+   * @param y
+   * @param x
+   * @return
+   */
+  public static float atan2LUT(float y, float x) {
+    return TrigLUT.atan2(y, x);
+  }
+
+  /**
    * Rounds {@code value} up; direct call to java.lang.Math
    * 
    * @param value
@@ -692,7 +762,7 @@ public final class FastMath {
    * 
    * @see Math#cos(double)
    * @param value
-   *          The angle to cosine
+   *          the angle to cosine in radians
    * @return the cosine of the angle
    */
   public static float cos(float value) {
@@ -798,13 +868,25 @@ public final class FastMath {
   /**
    * Returns the square root of {@code value}; direct call to java.lang.Math
    * 
-   * @param fValue
+   * @param value
    *          The value to sqrt.
    * @return The square root of the given value.
    * @see java.lang.Math#sqrt(double)
    */
-  public static float sqrt(float fValue) {
-    return (float) Math.sqrt(fValue);
+  public static float sqrt(float value) {
+    return (float) Math.sqrt(value);
+  }
+
+  /**
+   * Returns the cube root of {@code value}; direct call to java.lang.Math
+   * 
+   * @param value
+   *          the value to cube root
+   * @return the cube root of the given value
+   * @see java.lang.Math#cbrt(double)
+   */
+  public static float cbrt(float value) {
+    return (float) Math.cbrt(value);
   }
 
   /**
