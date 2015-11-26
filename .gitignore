@@ -1,5 +1,9 @@
 .classpath
 .project
 .settings/
+.idea/
 dist/
 bin/
+
+*.iml
+build.gradle
