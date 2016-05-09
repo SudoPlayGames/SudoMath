@@ -2,8 +2,6 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'signing'
 
-sourceSets.main.java.srcDirs = ["src/"]
-
 if (JavaVersion.current().isJava8Compatible()) {
     allprojects {
         tasks.withType(Javadoc) {
@@ -14,10 +12,6 @@ if (JavaVersion.current().isJava8Compatible()) {
 
 repositories {
     mavenCentral()
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.1'
 }
 
 task javadocJar(type: Jar) {
