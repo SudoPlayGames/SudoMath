@@ -10,8 +10,16 @@ if (JavaVersion.current().isJava8Compatible()) {
     }
 }
 
+group = 'com.sudoplay.math'
+version = new File("${project.projectDir}/project.version").text
+archivesBaseName = 'sudomath'
+
 repositories {
     mavenCentral()
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.1'
 }
 
 task javadocJar(type: Jar) {
@@ -63,9 +71,9 @@ uploadArchives {
         mavenDeployer {
             beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
-            pom.groupId = GROUP
-            pom.artifactId = POM_ARTIFACT_ID
-            pom.version = VERSION_NAME
+            pom.groupId = project.group
+            pom.artifactId = project.archivesBaseName
+            pom.version = project.version
 
             repository(url: getReleaseRepositoryUrl()) {
                 authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
