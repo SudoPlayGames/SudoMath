@@ -44,7 +44,7 @@ signing {
 }
 
 def isReleaseBuild() {
-    return VERSION_NAME.contains("SNAPSHOT") == false;
+    return project.version.contains("SNAPSHOT") == false;
 }
 
 def getReleaseRepositoryUrl() {
